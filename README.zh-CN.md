@@ -41,10 +41,10 @@ dependencies {
 #### 加载单个依赖
 以下示例展示了如何在运行时加载单个依赖：
 ```java
-import io.github.theramu.dependency.loader.DependencyLoader;
+import io.github.theramu.dependencyloader.DependencyLoader;
 
 public class Example {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException {
         new DependencyLoader().loadDependency("com.mysql:mysql-connector-j:9.0.0");
         System.out.println(Class.forName("com.mysql.cj.jdbc.Driver"));
     }

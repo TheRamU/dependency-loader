@@ -40,16 +40,12 @@ dependencies {
 #### Load a Single Dependency
 The following example demonstrates how to load a single dependency at runtime:
 ```java
-import io.github.theramu.dependency.loader.DependencyLoader;
+import io.github.theramu.dependencyloader.DependencyLoader;
 
 public class Example {
-    public static void main(String[] args) {
-        try {
-            new DependencyLoader().loadDependency("com.mysql:mysql-connector-j:9.0.0");
-            System.out.println(Class.forName("com.mysql.cj.jdbc.Driver"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public static void main(String[] args) throws ClassNotFoundException {
+        new DependencyLoader().loadDependency("com.mysql:mysql-connector-j:9.0.0");
+        System.out.println(Class.forName("com.mysql.cj.jdbc.Driver"));
     }
 }
 ```
@@ -61,26 +57,18 @@ String[] dependencies = {
     "com.mysql:mysql-connector-j:9.0.0",
     "com.zaxxer:HikariCP:5.1.0"
 };
-try {
-    new DependencyLoader().loadDependencies(dependencies);
-} catch (Exception e) {
-    e.printStackTrace();
-}
+new DependencyLoader().loadDependencies(dependencies);
 ```
 
 #### Use a Custom Repository
 If you need to load dependencies from a custom repository, specify the repository URL:
 ```java
 String[] dependencies = {
-    "com.mysql:mysql-connector-j:9.0.0",
-    "com.zaxxer:HikariCP:5.1.0"
+        "com.mysql:mysql-connector-j:9.0.0",
+        "com.zaxxer:HikariCP:5.1.0"
 };
 String[] repositories = {
-    "https://maven.aliyun.com/repository/public/"
+        "https://maven.aliyun.com/repository/public/"
 };
-try {
-    new DependencyLoader().loadDependencies(dependencies, repositories);
-} catch (Exception e) {
-    e.printStackTrace();
-}
+new DependencyLoader().loadDependencies(dependencies, repositories);
 ```
