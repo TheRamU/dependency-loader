@@ -29,8 +29,8 @@ import java.util.logging.Logger;
 public class DependencyDownloader {
     private static final String[] CENTRAL_REPOSITORIES = new String[]{
             "https://repo.maven.apache.org/maven2/",
-            "https://repo.huaweicloud.com/repository/maven/",
-            "https://maven.aliyun.com/nexus/content/groups/public/"
+//            "https://repo.huaweicloud.com/repository/maven/",
+//            "https://maven.aliyun.com/nexus/content/groups/public/"
     };
     private final Logger logger;
     private final File librariesFolder;
@@ -112,12 +112,20 @@ public class DependencyDownloader {
         try (FileOutputStream output = new FileOutputStream(filePath)) {
             byte[] buffer = new byte[1024];
             int bytesRead, totalBytesRead = 0;
-            long startTime = System.currentTimeMillis();
-
+            int tempBytesRead = 0;
+            long tempTime = System.currentTimeMillis();
             while ((bytesRead = input.read(buffer)) != -1) {
                 totalBytesRead += bytesRead;
+                tempBytesRead += bytesRead;
                 output.write(buffer, 0, bytesRead);
-                printProgressIfNeeded(file.getName(), length, totalBytesRead, startTime);
+                long currentTime = System.currentTimeMillis();
+                if (currentTime - tempTime < 500 && totalBytesRead < length) {
+                    continue;
+                }
+                int rate = (int) (tempBytesRead / ((currentTime - tempTime) / 1000.0));
+                printProgressBar(file.getName(), length, totalBytesRead, rate);
+                tempTime = currentTime;
+                tempBytesRead = 0;
             }
             return 1;
         } catch (IOException e) {
@@ -166,14 +174,6 @@ public class DependencyDownloader {
             }
         }
         return null;
-    }
-
-    private void printProgressIfNeeded(String fileName, int length, int totalBytesRead, long startTime) {
-        long currentTime = System.currentTimeMillis();
-        if (currentTime - startTime >= 500 || totalBytesRead >= length) {
-            int rate = (int) (totalBytesRead / ((currentTime - startTime) / 1000.0));
-            printProgressBar(fileName, length, totalBytesRead, rate);
-        }
     }
 
     private void printProgressBar(String fileName, int length, int byteSum, int rate) {
