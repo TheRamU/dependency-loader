@@ -14,7 +14,7 @@ To include DependencyLoader in your Maven project, add the following dependency 
     <dependency>
         <groupId>io.github.theramu</groupId>
         <artifactId>dependency-loader</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
     </dependency>
 </dependencies>
 ```
@@ -23,7 +23,7 @@ To include DependencyLoader in your Maven project, add the following dependency 
 For Gradle projects, add the following content to your `build.gradle` file:
 ```groovy
 dependencies {
-    implementation 'io.github.theramu:dependency-loader:1.0.0'
+    implementation 'io.github.theramu:dependency-loader:1.0.1'
 }
 ```
 
@@ -31,7 +31,7 @@ dependencies {
 For projects using Gradle Kotlin DSL, add the following content to your `build.gradle.kts` file:
 ```kotlin
 dependencies {
-    implementation("io.github.theramu:dependency-loader:1.0.0")
+    implementation("io.github.theramu:dependency-loader:1.0.1")
 }
 ```
 

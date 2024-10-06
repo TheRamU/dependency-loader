@@ -15,7 +15,7 @@ DependencyLoader 是一个轻量的依赖加载器，可以在程序执行期间
     <dependency>
         <groupId>io.github.theramu</groupId>
         <artifactId>dependency-loader</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
     </dependency>
 </dependencies>
 ```
@@ -24,7 +24,7 @@ DependencyLoader 是一个轻量的依赖加载器，可以在程序执行期间
 对于 Gradle 项目，请在 `build.gradle` 文件中添加以下内容：
 ```groovy
 dependencies {
-    implementation 'io.github.theramu:dependency-loader:1.0.0'
+    implementation 'io.github.theramu:dependency-loader:1.0.1'
 }
 ```
 
@@ -32,7 +32,7 @@ dependencies {
 对于 Gradle Kotlin DSL 项目，请在 `build.gradle.kts` 文件中添加以下内容：
 ```kotlin
 dependencies {
-    implementation("io.github.theramu:dependency-loader:1.0.0")
+    implementation("io.github.theramu:dependency-loader:1.0.1")
 }
 ```
 
