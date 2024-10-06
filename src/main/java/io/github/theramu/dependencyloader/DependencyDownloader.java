@@ -29,8 +29,8 @@ import java.util.logging.Logger;
 public class DependencyDownloader {
     private static final String[] CENTRAL_REPOSITORIES = new String[]{
             "https://repo.maven.apache.org/maven2/",
-//            "https://repo.huaweicloud.com/repository/maven/",
-//            "https://maven.aliyun.com/nexus/content/groups/public/"
+            "https://repo.huaweicloud.com/repository/maven/",
+            "https://maven.aliyun.com/nexus/content/groups/public/"
     };
     private final Logger logger;
     private final File librariesFolder;
