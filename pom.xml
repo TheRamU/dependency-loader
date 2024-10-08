@@ -6,7 +6,7 @@
 
     <groupId>io.github.theramu</groupId>
     <artifactId>dependency-loader</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
     <name>Dependency Loader</name>
     <description>A lightweight dependency loader library for Java applications.</description>
